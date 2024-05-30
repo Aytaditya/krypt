@@ -1,34 +1,42 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.19;
 
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
+ import "hardhat/console.sol";
 
-contract Lock {
-    uint public unlockTime;
-    address payable public owner;
+contract Lock{
+    uint256 transactionCount;
 
-    event Withdrawal(uint amount, uint when);
+    event Transfer(address from , address reciever, uint amount, string message , uint256 timestamp,string keyword);
 
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
-
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
+    struct TransferStruct{
+        address sender;
+        address reciever;
+        uint amount;
+        string message;
+        uint256 timestamp;
+        string keyword;
     }
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
+    //transaction an array of TransferStruct
+    TransferStruct[] transaction; 
 
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
+    function addToBlockchain(address payable receiver,uint amount,string memory message,string memory keyword) public {
+        transactionCount=transactionCount+1;
+        transaction.push(TransferStruct(msg.sender,receiver,amount,message,block.timestamp,keyword));
 
-        emit Withdrawal(address(this).balance, block.timestamp);
+        emit Transfer(msg.sender,receiver,amount,message,block.timestamp,keyword);
 
-        owner.transfer(address(this).balance);
+        receiver.transfer(amount); //transfer the amount to the receiver
+
     }
+
+    function getAllTransactions() public view returns(TransferStruct[] memory){
+        return transaction;
+
+    }
+
+    function getTransactionCount() public view returns(uint256){
+        return transactionCount;
+    }
+
 }
