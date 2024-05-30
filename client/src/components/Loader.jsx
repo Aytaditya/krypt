@@ -2,8 +2,8 @@
 
 const Loader = () => {
   return (
-    <div>
-      this is loading...
+    <div className="flex justify-center items-center py-3 text-red-500 text-2xl">
+      Loading....
     </div>
   )
 }
