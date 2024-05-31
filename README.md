@@ -1,5 +1,4 @@
 
-```markdown
 # Krypt: Secure and Transparent Crypto Sending Platform
 
 **Project Overview**
