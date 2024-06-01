@@ -90,5 +90,5 @@ Krypt utilizes a modern tech stack to deliver a performant and user-friendly exp
 
 Cryptocurrency transactions are irreversible. Please exercise due diligence when sending crypto, as you cannot retrieve funds once a transaction is confirmed. Ensure you have the correct recipient's wallet address before proceeding.
 
-
+![image](./krypt3.png)
 

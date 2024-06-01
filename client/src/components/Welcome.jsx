@@ -144,7 +144,7 @@ const Welcome = () => {
 
             <Input placeholder={"Amount (ETH)"} name={"amount"} type={"number"} handleChange={handleChange} />
 
-            <Input placeholder={"Keyoword (GIF)"} name={"keyword"} type={"text"} handleChange={handleChange} />
+            <Input placeholder={"Keyword (GIF)"} name={"keyword"} type={"text"} handleChange={handleChange} />
 
             <Input placeholder={"Enter Message"} name={"message"} type={"text"} handleChange={handleChange} />
             {/* updating each value once*/}
