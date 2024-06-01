@@ -19,9 +19,13 @@ const createEthereumContract = () => {
 
 export const TransactionContextProvider = ({ children }) => {
   const [formData, setformData] = useState({ addressTo: "", amount: "", keyword: "", message: "" });
+
   const [currentAccount, setCurrentAccount] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
+
   const [transactionCount, setTransactionCount] = useState(localStorage.getItem("transactionCount"));
+  
   const [transactions, setTransactions] = useState([]);
 
   const handleChange = (e, name) => {
